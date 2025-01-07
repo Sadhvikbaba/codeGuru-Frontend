@@ -35,7 +35,7 @@ export default function Login() {
   // GitHub login handler
   const handleGitHubLogin = async () => {
     const GITHUB_CLIENT_ID = import.meta.env.VITE_GITHUB_OAUTH_CLIENT_ID;
-    const REDIRECT_URI = `${import.meta.env.VITE_URI}/auth/github/callback`;
+    const REDIRECT_URI = `https://code-guru-frontend.vercel.app/auth/github/callback`;
   
     try {
       // Redirect user to GitHub OAuth authorization URL
