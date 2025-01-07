@@ -19,7 +19,7 @@ export default function Login() {
     onSuccess: async (tokenResponse) => {
       try {
         const response = await axios.post(
-          "http://localhost:8000/api/v1/user/get-started",
+          `${import.meta.env.VITE_URI}/api/v1/user/get-started`,
           { token: tokenResponse.access_token, provider: "google" },
           { withCredentials: true }
         );
@@ -35,7 +35,7 @@ export default function Login() {
   // GitHub login handler
   const handleGitHubLogin = async () => {
     const GITHUB_CLIENT_ID = import.meta.env.VITE_GITHUB_OAUTH_CLIENT_ID;
-    const REDIRECT_URI = "http://localhost:5173/auth/github/callback";
+    const REDIRECT_URI = `${import.meta.env.VITE_URI}/auth/github/callback`;
   
     try {
       // Redirect user to GitHub OAuth authorization URL
@@ -53,7 +53,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/v1/user/get-started",
+        `${import.meta.env.VITE_URI}/api/v1/user/get-started`,
         { email, password, provider: "normal" },
         { withCredentials: true }
       );
