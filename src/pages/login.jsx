@@ -19,7 +19,7 @@ export default function Login() {
     onSuccess: async (tokenResponse) => {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_URI}/api/v1/user/get-started`,
+          `${import.meta.env.VITE_URI}/user/get-started`,
           { token: tokenResponse.access_token, provider: "google" },
           { withCredentials: true }
         );

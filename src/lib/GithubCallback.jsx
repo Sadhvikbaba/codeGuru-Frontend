@@ -14,7 +14,7 @@ const GithubCallback = () => {
     if (code) {
       axios
         .post(
-          `${import.meta.env.VITE_URI}/api/v1/user/get-started`,
+          `${import.meta.env.VITE_URI}/user/get-started`,
           { code, provider: "github" },
           {
             headers: { "Content-Type": "application/json" },
