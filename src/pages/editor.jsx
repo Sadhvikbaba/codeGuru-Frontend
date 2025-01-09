@@ -121,9 +121,6 @@ const QuestionPage = () => {
                 </ul>
                 <div>
                   <strong>Hints :</strong>
-                  {question?.hints?.map((hint, index) => (
-                    <p key={index}>{hint}</p>
-                  ))}
                 </div>
                 <div className="p-2">
                   {question?.hints?.map((hint, index) =>

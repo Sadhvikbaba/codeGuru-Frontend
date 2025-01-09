@@ -53,7 +53,7 @@ export default function Login() {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_URI}/api/v1/user/get-started`,
+        `${import.meta.env.VITE_URI}/user/get-started`,
         { email, password, provider: "normal" },
         { withCredentials: true }
       );
