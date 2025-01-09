@@ -9,10 +9,12 @@ import { useNavigate } from "react-router-dom";
 import loginImage from "@/assets/loginImage.jpeg";
 import {login as stateLogin} from "@/store/authSlice"
 import { useDispatch } from "react-redux";
+import { useToast } from "@/hooks/use-toast";
 
 export default function Login() {
   const navigate = useNavigate();
   const Dispatch = useDispatch();
+  const {toast} = useToast()
 
   // Google login handler
   const loginWithGoogle = useGoogleLogin({
@@ -52,14 +54,20 @@ export default function Login() {
     const password = event.target.password.value;
 
     try {
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_URI}/user/get-started`,
         { email, password, provider: "normal" },
         { withCredentials: true }
-      );
-      Dispatch(stateLogin(response.data?.message?.user))
+      ).then((res) => {
+        Dispatch(stateLogin(res.data?.message?.user))
+        navigate("/problems");
+      })
+      .catch((res) => {toast({variant : "destructive", description : res?.response?.data?.message})
+      })
 
-      navigate("/problems");
+      
+      
+      
     } catch (error) {
       console.error("Error during normal login:", error.response);
     }
