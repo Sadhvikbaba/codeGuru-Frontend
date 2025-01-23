@@ -23,6 +23,13 @@ const parse = (submissions) => {
   );
 }
 
+const languageIds = {
+  54 : "Cpp",
+  50 : "C" ,
+  71 : "Python",
+  62 : "Java",
+};
+
 const UserDashboard = () => {
   const Navigate = useNavigate()
 
@@ -30,6 +37,7 @@ const UserDashboard = () => {
   const [loading , setLoading] = useState(true)
   const [userInfo , setUserInfo] = useState()
   const [chartData , setChartData] = useState()
+  
 
 
   useEffect(() => {
@@ -124,6 +132,7 @@ const UserDashboard = () => {
               <TableRow>
                 <TableHead >Title</TableHead>
                 <TableHead >Difficulty</TableHead>
+                <TableHead >language</TableHead>
                 <TableHead >Submitted At</TableHead>
               </TableRow>
             </TableHeader>
@@ -142,6 +151,7 @@ const UserDashboard = () => {
                   >
                     {question.question.difficulty}
                   </Badge></TableCell>
+                  <TableCell><Badge variant="secondary">{languageIds[question.language]}</Badge></TableCell>
                   <TableCell>{question.updatedAt.slice(0 ,10)}</TableCell>
                 </TableRow>
               ))}
